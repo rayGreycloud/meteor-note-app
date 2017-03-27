@@ -67,5 +67,16 @@ if (Meteor.isServer) {
       });
     });
 
+    it('should not update note if extra props', function () {
+      expect(() => {
+        Meteor.server.method_handlers['notes.update'].apply({
+          userId: noteOne.userId
+        }, [
+          noteOne._id,
+          { title: 'New Title', newProp: 'New Property' }
+        ]);
+      }).toThrow();
+    });
+
   }); // end describe
 }
