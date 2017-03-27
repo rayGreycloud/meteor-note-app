@@ -48,5 +48,24 @@ if (Meteor.isServer) {
       }).toThrow();
     });
 
+    it('should update note', function () {
+      const title = 'Updated Title';
+
+      Meteor.server.method_handlers['notes.update'].apply({
+        userId: noteOne.userId
+      }, [
+        noteOne._id,
+        { title }
+      ]);
+
+      const note = Notes.findOne(noteOne._id);
+
+      expect(note.updatedAt).toBeGreaterThan(0);
+      expect(note).toInclude({
+        title,
+        body: noteOne.body,
+      });
+    });
+
   }); // end describe
 }
