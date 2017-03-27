@@ -30,6 +30,6 @@ Meteor.methods({
       }
     }).validate({ _id });
 
-    Notes.remove({ _id });
+    Notes.remove({ _id, userId: this.userId });
   }
 });
