@@ -23,7 +23,7 @@ if (Meteor.isServer) {
       expect(Notes.findOne({ _id, userId })).toExist();
     });
 
-    it('should not insert note if not authenticated', function () {
+    it('should not insert note if unauthenticated', function () {
       expect(() => {
         Meteor.server.method_handlers['notes.insert']();
       }).toThrow();
@@ -34,5 +34,13 @@ if (Meteor.isServer) {
 
       expect(Notes.findOne({ _id: 'testNoteId1'})).toNotExist();
     });
+
+    it('should not remove note if unauthenticated', function () {
+      expect(() => {
+        Meteor.server.method_handlers['notes.remove'].apply({}, ['testNoteId1']);
+      }).toThrow();
+    });
+
+
   });
 }
