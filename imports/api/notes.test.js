@@ -95,5 +95,12 @@ if (Meteor.isServer) {
       expect(note).toInclude(noteOne);
     });
 
+    it('should not update note if unauthenticated', function () {
+      expect(() => {
+        Meteor.server.method_handlers['notes.update'].apply({}, [noteOne._id]);
+      }).toThrow();
+    });
+
+    
   }); // end describe
 }
