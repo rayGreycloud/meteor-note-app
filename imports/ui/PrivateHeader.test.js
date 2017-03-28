@@ -13,5 +13,12 @@ if (Meteor.isClient) {
 
       expect(buttonText).toBe('Logout');
     });
+
+    it('should use title prop as h1 text', function () {
+      const wrapper = mount( <PrivateHeader title="Test title"/> );
+      const titleText = wrapper.find('h1').text();
+
+      expect(titleText).toBe('Test title');
+    });
   });
 }
