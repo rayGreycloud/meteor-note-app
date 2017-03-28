@@ -101,6 +101,10 @@ if (Meteor.isServer) {
       }).toThrow();
     });
 
-    
+    it('should not update note if invalid _id', function () {
+      expect(() => {
+        Meteor.server.method_handlers['notes.update'].apply({ userId: noteOne.userId });
+      }).toThrow();
+    });
   }); // end describe
 }
