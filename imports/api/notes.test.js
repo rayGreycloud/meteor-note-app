@@ -68,14 +68,31 @@ if (Meteor.isServer) {
     });
 
     it('should not update note if extra props', function () {
+      const title = 'Updated Title';
+
       expect(() => {
         Meteor.server.method_handlers['notes.update'].apply({
           userId: noteOne.userId
         }, [
           noteOne._id,
-          { title: 'New Title', newProp: 'New Property' }
+          { title, newProp: 'New Property' }
         ]);
       }).toThrow();
+    });
+
+    it('should not update note if user not creator', function () {
+      const title = 'Updated Title';
+
+      Meteor.server.method_handlers['notes.update'].apply({
+        userId: 'testUserId2'
+      }, [
+        noteOne._id,
+        { title }
+      ]);
+
+      const note = Notes.findOne(noteOne._id);
+
+      expect(note).toInclude(noteOne);
     });
 
   }); // end describe
