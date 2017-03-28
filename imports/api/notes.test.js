@@ -115,7 +115,7 @@ if (Meteor.isServer) {
       }).toThrow();
     });
 
-    it('should return a user notes', function () {
+    it('should return a users notes', function () {
       const res = Meteor.server.publish_handlers.notes.apply({ userId: noteOne.userId });
       // Call fetch because above returns cursor
       const notes = res.fetch();
@@ -124,5 +124,11 @@ if (Meteor.isServer) {
       expect(notes[0]).toEqual(noteOne);
     });
 
+    it('should return zero notes for user with no notes', function () {
+      const res = Meteor.server.publish_handlers.notes.apply({ userId: 'testUserId3' });
+      const notes = res.fetch();
+
+      expect(notes.length).toBe(0);
+    });
   }); // end describe
 }
