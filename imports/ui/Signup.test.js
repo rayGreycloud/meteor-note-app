@@ -45,19 +45,20 @@ if (Meteor.isClient) {
       expect(wrapper.state('error').length).toBeGreaterThan(0);
     });
 
-    // it('should set loginWithPassword callback errors', function () {
-    //   const spy = expect.createSpy();
-    //   const wrapper = mount(<Login loginWithPassword={spy}/>);
-    //
-    //   wrapper.find('form').simulate('submit');
-    //
-    //   // Call error function
-    //   spy.calls[0].arguments[2]({});
-    //   // Check if error set
-    //   expect(wrapper.state('error')).toNotBe('');
-    //
-    //   spy.calls[0].arguments[2]();
-    //   expect(wrapper.state('error')).toBe('');
-    // });
+    it('should set createUser callback errors', function () {
+      const password = 'password'
+      const reason = 'The reason why it failed';
+      const spy = expect.createSpy();
+      const wrapper = mount(<Signup createUser={spy}/>);
+
+      wrapper.ref('password').node.value = password;
+      wrapper.find('form').simulate('submit');
+
+      spy.calls[0].arguments[1]({ reason });
+      expect(wrapper.state('error')).toEqual(reason);
+
+      spy.calls[0].arguments[1]();
+      expect(wrapper.state('error')).toBe('');
+    });
   });
 }
