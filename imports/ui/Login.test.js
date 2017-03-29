@@ -23,7 +23,6 @@ if (Meteor.isClient) {
       const email = 'darth@sith.com';
       const password = 'password';
       const spy = expect.createSpy();
-
       const wrapper = mount(<Login loginWithPassword={spy}/>);
 
       wrapper.ref('email').node.value = email;
@@ -32,13 +31,21 @@ if (Meteor.isClient) {
 
       expect(spy.calls[0].arguments[0]).toEqual({ email });
       expect(spy.calls[0].arguments[1]).toBe(password);
-
     });
 
     it('should set loginWithPassword callback errors', function () {
+      const spy = expect.createSpy();
+      const wrapper = mount(<Login loginWithPassword={spy}/>);
 
+      wrapper.find('form').simulate('submit');
+
+      // Call error function
+      spy.calls[0].arguments[2]({});
+      // Check if error set
+      expect(wrapper.state('error')).toNotBe('');
+
+      spy.calls[0].arguments[2]();
+      expect(wrapper.state('error')).toBe('');
     });
-
-
   });
 }
