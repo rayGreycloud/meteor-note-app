@@ -13,8 +13,10 @@ if (Meteor.isClient) {
       const wrapper = mount(<Login loginWithPassword={() => {}}/>);
 
       wrapper.setState({ error });
-      const errorText = wrapper.find('p').text();
-      expect(errorText).toBe(error);
+      expect(wrapper.find('p').text()).toBe(error);
+
+      wrapper.setState({ error: '' });
+      expect(wrapper.find('p').text()).toBe(error);
     });
   });
 }
