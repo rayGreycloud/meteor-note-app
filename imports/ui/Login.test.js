@@ -16,7 +16,7 @@ if (Meteor.isClient) {
       expect(wrapper.find('p').text()).toBe(error);
 
       wrapper.setState({ error: '' });
-      expect(wrapper.find('p').text()).toBe(error);
+      expect(wrapper.find('p').length).toBe(0);
     });
   });
 }
