@@ -14,7 +14,7 @@ if (Meteor.isServer) {
 Meteor.methods({
   'notes.insert'() {
     if (!this.userId) {
-      throw new Meteor.error('not-authorized');
+      throw new Meteor.Error('not-authorized');
     }
 
     return Notes.insert({
@@ -26,7 +26,7 @@ Meteor.methods({
   },
   'notes.remove'(_id) {
     if (!this.userId) {
-      throw new Meteor.error('not-authorized');
+      throw new Meteor.Error('not-authorized');
     }
 
     new SimpleSchema({
@@ -40,7 +40,7 @@ Meteor.methods({
   },
   'notes.update'(_id, updates) {
     if (!this.userId) {
-      throw new Meteor.error('not-authorized');
+      throw new Meteor.Error('not-authorized');
     }
 
     new SimpleSchema({
