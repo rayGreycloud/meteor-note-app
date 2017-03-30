@@ -1,6 +1,6 @@
 import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
-import moment from "moment";
+import moment from 'moment';
 import SimpleSchema from 'simpl-schema';
 
 export const Notes = new Mongo.Collection('notes');

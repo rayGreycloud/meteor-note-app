@@ -7,16 +7,14 @@ export const NoteListHeader = (props) => {
     <div>
       <button onClick={() => {
         props.meteorCall('notes.insert');
-      }}>
-        Create Note
-      </button>
+      }}>Create Note</button>
     </div>
   );
 };
 
 NoteListHeader.propTypes = {
   meteorCall: React.PropTypes.func.isRequired
-}
+};
 
 export default createContainer(() => {
   return {

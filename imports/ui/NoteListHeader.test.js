@@ -3,7 +3,7 @@ import expect from 'expect';
 import { Meteor } from 'meteor/meteor';
 import { mount } from 'enzyme';
 
-import NoteListHeader from './NoteListHeader';
+import { NoteListHeader } from './NoteListHeader';
 
 if (Meteor.isClient) {
   describe('NoteListHeader', function () {
@@ -13,7 +13,7 @@ if (Meteor.isClient) {
       const wrapper = mount( <NoteListHeader meteorCall={spy} /> );
 
       wrapper.find('button').simulate('click');
-      
+
       expect(spy).toHaveBeenCalledWith('notes.insert');
     });
   });
