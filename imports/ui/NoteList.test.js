@@ -6,7 +6,7 @@ import { mount } from 'enzyme';
 import { NoteList } from './NoteList';
 
 if (Meteor.isClient) {
-  describe('NoteListEmptyItem', function () {
+  describe('NoteList', function () {
     it('should', function () {
 
     });
