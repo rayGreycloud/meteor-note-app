@@ -2,7 +2,7 @@ import React from 'react';
 
 import NoteList from './NoteList';
 import PrivateHeader from './PrivateHeader';
-import {Editor} from './Editor';
+import Editor from './Editor';
 
 const Dashboard = () => {
   return (
