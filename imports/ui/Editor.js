@@ -6,11 +6,20 @@ import { Notes } from './../api/notes';
 
 export class Editor extends Component {
   render() {
-    return (
-      <div>Editor Component</div>
-    );
+
+    if (this.props.note) {
+      return (
+        <p>Note found</p>
+      )
+    } else {
+      return (
+        <p>
+          { this.props.selectedNoteId ? 'Note not found': 'Pick or create a note to get started'}
+        </p>
+      );
+    }
   }
-}
+};
 
 Editor.propTypes = {
   note: React.PropTypes.object,
