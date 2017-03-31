@@ -1,3 +1,4 @@
-#Generic Meteor Project
+# Noted
+## note web app
 
-Includes a basic react and auth setup.
+Project built using Meteor and React
