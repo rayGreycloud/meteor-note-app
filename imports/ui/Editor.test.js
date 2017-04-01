@@ -27,5 +27,15 @@ if (Meteor.isClient) {
       const wrapper = mount(<Editor browserHistory={browserHistory} call={call} selectedNoteId={notes[0]._id}/>);
       expect(wrapper.find('p'). text()).toBe('Note not found');
     });
+
+    it('should remove note', function () {
+      const wrapper = mount(<Editor browserHistory={browserHistory} call={call} selectedNoteId={notes[0]._id} note={notes[0]}/>);
+
+      wrapper.find('button').simulate('click');
+
+      expect(browserHistory.push).toHaveBeenCalledWith('/dashboard');
+      expect(call).toHaveBeenCalledWith('notes.remove', notes[0]._id);
+    });
+
   });
 }
