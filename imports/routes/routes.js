@@ -45,7 +45,7 @@ export const globalOnChange = (prev, nextState) => {
 };
 
 export const globalOnEnter = (nextState) => {
-  const lastRoute = nextState.routes[nextState.length - 1];
+  const lastRoute = nextState.routes[nextState.routes.length - 1];
   Session.set('currentPagePrivacy', lastRoute.privacy);
 };
 
