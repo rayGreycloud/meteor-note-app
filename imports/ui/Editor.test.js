@@ -76,5 +76,16 @@ if (Meteor.isClient) {
       expect(wrapper.state('title')).toBe(notes[0].title);
       expect(wrapper.state('body')).toBe(notes[0].body);
     });
+
+    it('should not set state if no note prop', function () {
+      const wrapper = mount(<Editor browserHistory={browserHistory} call={call}/>);
+
+      wrapper.setProps({
+        selectedNoteId: notes[0]._id
+      });
+
+      expect(wrapper.state('title')).toBe('');
+      expect(wrapper.state('body')).toBe('');
+    });
   });
 }
