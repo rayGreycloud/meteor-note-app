@@ -37,5 +37,19 @@ if (Meteor.isClient) {
       expect(call).toHaveBeenCalledWith('notes.remove', notes[0]._id);
     });
 
+    it('should update note body on textarea change', function () {
+      const newBody = 'This is the updated note body.'
+      const wrapper = mount(<Editor browserHistory={browserHistory} call={call} selectedNoteId={notes[0]._id} note={notes[0]}/>);
+
+      wrapper.find('textarea').simulate('change', {
+        target: {
+          value: newBody
+        }
+      });
+
+      expect(wrapper.state('body')).toBe(newBody);
+      expect(call).toHaveBeenCalledWith('notes.update', notes[0]._id, { body: newBody });
+    });
+
   });
 }
