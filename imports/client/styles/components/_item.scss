@@ -12,21 +12,15 @@
 }
 
 .item {
-  background: $item-bg;
-  border: 1px solid $item-border;
-  margin-bottom: $space;
+  border-left: $item-border-width solid transparent;
+  cursor: pointer;
   padding: $space;
+  transition: background-color .3s ease, border-left .3s ease;
 }
 
-.item__message {
-  color: $item-text-color;
-}
-
-.item__status-message {
-  color: $item-text-color;
-  font-style: italic;
-  text-align: center;
-  margin: 0;
+.item:hover {
+  background-color: $light-grey;
+  border-left: $item-border-width solid $grey;
 }
 
 .empty-item {
