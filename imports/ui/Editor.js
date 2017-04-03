@@ -53,7 +53,7 @@ export class Editor extends Component {
     } else {
       return (
         <div className="editor">
-          <p>
+          <p className="editor__message">
             { this.props.selectedNoteId ? 'Note not found': 'Pick or create a note to get started'}
           </p>
         </div>

@@ -24,3 +24,9 @@
   padding: $input-spacing;
   resize: none;
 }
+
+.editor__message {
+  text-align: center;
+  margin: $large-space * 2;
+  font-style: italic;
+}
