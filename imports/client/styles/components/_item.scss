@@ -5,6 +5,12 @@
   overflow-y: scroll;
 }
 
+.item-list__header {
+  display: flex;
+  flex-direction: column;
+  padding: $space;
+}
+
 .item {
   background: $item-bg;
   border: 1px solid $item-border;
@@ -21,4 +27,11 @@
   font-style: italic;
   text-align: center;
   margin: 0;
+}
+
+.empty-item {
+  font-style: italic;
+  padding: $space;
+  text-align: center;
+
 }
