@@ -13,9 +13,14 @@
   font-size: $large-font-size;
   margin-bottom: $large-space;
   outline: none;
-  padding: $input-border;
+  padding: $input-spacing;
 }
 
 .editor__body {
-
+  flex-grow: 1;
+  font-weight: 300;
+  margin-bottom: $large-space;
+  outline: none;
+  padding: $input-spacing;
+  resize: none;
 }
