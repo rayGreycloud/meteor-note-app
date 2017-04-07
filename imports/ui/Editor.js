@@ -25,6 +25,7 @@ export class Editor extends Component {
     this.props.call('notes.update', this.props.note._id, { title });
   }
   handleRemoval() {
+    // Add confirm delete modal here
     this.props.call('notes.remove', this.props.note._id);
     this.props.browserHistory.push('/dashboard');
   }
